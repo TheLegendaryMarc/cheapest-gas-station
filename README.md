@@ -1,5 +1,5 @@
 
-# Cheap Gas Station Finder
+# Cheapest Gas Station Finder
 a litte Script for Scriptable (iOS) to find the cheapest Gas Station in your location
 
 ## Installation
