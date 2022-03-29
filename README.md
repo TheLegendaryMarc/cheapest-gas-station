@@ -12,5 +12,5 @@ Following Requirements do you need to use this Script
 
 Insert the Credentials on the top on the Script.
 
- Thanks
+## Thanks
 Based on the ["Klopapier"](https://gist.github.com/marco79cgn/23ce08fd8711ee893a3be12d4543f2d2) Script from [marco79cgn](https://gist.github.com/marco79cgn)
