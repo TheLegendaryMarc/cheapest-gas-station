@@ -1,7 +1,7 @@
 
 
 let apiKey = 'YOUR_API_KEY_HERE'
-let fuelType = 'e5' //	'e5', 'e10', 'diesel' oder 'all'
+let fuelType = 'e5' //	'e5', 'e10', 'diesel'
 let param = args.widgetParameter
 
 const widget = new ListWidget()
