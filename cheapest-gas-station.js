@@ -1,5 +1,3 @@
-
-
 let apiKey = 'YOUR_API_KEY_HERE'
 let fuelType = 'e5' //	'e5', 'e10', 'diesel'
 let param = args.widgetParameter
@@ -83,35 +81,29 @@ async function createWidget() {
 
 
 async function fetchfuelPrices() {
+    try {
     let location = await Location.current()
     let url
-    let counter = 0
-        url = 'https://creativecommons.tankerkoenig.de/json/list.php?lat=' + location.latitude + '&lng='+location.longitude+'&sort=price&rad=5&type='+ fuelType+'&apikey=' + apiKey
-        const req = new Request(url)
-        const apiResult = await req.loadJSON()
+    url = 'https://creativecommons.tankerkoenig.de/json/list.php?lat=' + location.latitude + '&lng='+location.longitude+'&sort=price&rad=5&type='+ fuelType+'&apikey=' + apiKey
+    const req = new Request(url)
+    const apiResult = await req.loadJSON()
     let cheapestStation = apiResult.stations[0]
     return cheapestStation
-}
-
-async function getBrandLogo(brand){
-    let brandlogo;
-    switch(brand.toLowerCase){
-        case "aral":
-            brandlogo = getImage('aral.png','https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Aral_Logo.svg/480px-Aral_Logo.svg.png')
-            break;
-            case "shell":
-            brandlogo = getImage('shell.png','https://upload.wikimedia.org/wikipedia/de/thumb/7/74/Royal_Dutch_Shell.svg/500px-Royal_Dutch_Shell.svg.png')
-            break;
-            case "esso":
-            brandlogo = getImage('esso.png','https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Esso-Logo.svg/640px-Esso-Logo.svg.png')
-            break;
-            case "jet":
-            brandlogo = getImage('jet.png','https://upload.wikimedia.org/wikipedia/de/thumb/e/e5/JET.svg/500px-JET.svg.png')
-            break;
-        default:
-            brandlogo = getImage('gasstation.png','https://cdn.retz.io/assets/gasstation.png')
+    }catch(e){
+        console.log(e);
+        console.log('Error while fetching Information')
     }
-    return brandlogo;
+    return {
+        brand: "unknow",
+        price: "-,--",
+        name: "---",
+        street: "---",
+        postCode: "---",
+        place: "---",
+        houseNumber: "---",
+        isOpen: false,
+
+    };
 }
 
 // get images from local filestore or download them once
